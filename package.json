@@ -71,7 +71,7 @@
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
-    "canvas": "^1.6.11",
+    "canvas": "^2.4.0",
     "cross-env": "^5.2.0",
     "eslint": "^5.11.1",
     "eslint-config-prettier": "^3.3.0",
