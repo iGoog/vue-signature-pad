@@ -1,5 +1,7 @@
 import SignaturePad from 'signature_pad';
 import mergeImages from 'merge-images';
+import debounce from 'lodash/fp';
+
 import {
   DEFAULT_OPTIONS,
   TRANSPARENT_PNG,
@@ -49,7 +51,7 @@ export default {
     });
     this.signaturePad = signaturePad;
 
-    this.onResizeHandler = this.resizeCanvas.bind(this);
+    this.onResizeHandler = this.handleResize.bind(this);
 
     window.addEventListener('resize', this.onResizeHandler, false);
 
@@ -61,6 +63,13 @@ export default {
     }
   },
   methods: {
+    handleResize() {
+      debounce(this.resizeCanvas(), 150, {
+        leading: true,
+        trailing: true
+      });
+      console.log('handleSize');
+    },
     resizeCanvas() {
       const canvas = this.$refs.signaturePadCanvas;
       const data = this.signaturePad.toData();
